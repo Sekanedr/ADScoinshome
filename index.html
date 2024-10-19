@@ -49,7 +49,7 @@
             margin-bottom: 20px;
         }
         .button {
-            background-color: #0088cc; /* لون أزرار مشابه لتلجرام */
+            background-color: #0088cc;
             color: white;
             padding: 15px;
             font-size: 20px;
@@ -64,13 +64,13 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            text-decoration: none; /* إزالة خط التسطير */
+            text-decoration: none;
         }
         .button i {
             font-size: 24px;
         }
         .button:hover {
-            background-color: #0077b3; /* ظل داكن عند التمرير */
+            background-color: #0077b3;
         }
         footer {
             background-color: #333;
@@ -104,8 +104,8 @@
         </div>
     </div>
 
-    <div class="points">
-        1000
+    <div class="points" id="pointsDisplay">
+        0
     </div>
 
     <div class="button-container">
@@ -135,6 +135,18 @@
             <span>Friends</span>
         </a>
     </footer>
+
+    <script>
+        const pointsDisplay = document.getElementById('pointsDisplay');
+        let points = localStorage.getItem('points') ? parseInt(localStorage.getItem('points')) : 0;
+
+        if (points === 0) {
+            points = 20000; // نقاط أول دخول
+            localStorage.setItem('points', points);
+        }
+
+        pointsDisplay.textContent = points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    </script>
 
 </body>
 </html>
